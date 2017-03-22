@@ -3,8 +3,14 @@ import { connect } from 'react-redux';
 
 import AggregateChart from './AggregateChart';
 import LogTable from './LogTable';
+import { DEFAULTS } from '../../utils/constants';
+import { setSelectedApplication } from '../../actions/selected';
 
 class MainView extends Component {
+	onHomeClick() {
+		this.props.setSelectedApplication(DEFAULTS.selected.application);
+	}
+
 	renderContent() {
 		if(this.props.selected.application.id === '') {
 			return (
@@ -27,7 +33,7 @@ class MainView extends Component {
 					<div className="page-bar">
                         <ul className="page-breadcrumb">
                             <li>
-                                <span>Home</span>
+                                <a href="javascript:;" onClick={() => this.onHomeClick()}>Home</a>
                             </li>
                             <li>
 								<i className="fa fa-circle"></i>
@@ -49,7 +55,13 @@ function mapStateToProps(state) {
 	};
 }
 
+function mapDispatchToProps(dispatch) {
+	return {
+		setSelectedApplication: data => dispatch(setSelectedApplication(data))
+	};
+}
+
 export default connect(
 	mapStateToProps,
-	null
+	mapDispatchToProps
 )(MainView);

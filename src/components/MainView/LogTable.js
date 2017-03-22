@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import { TYPE_TO_CLASS } from '../../utils/constants';
 
-// default, info, active, success, warning, danger
-
 class LogTable extends Component {
 	renderLogTableRows() {
 		this.props.logs.map(log => {

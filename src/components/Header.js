@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Header extends Component {
+import { DEFAULTS } from '../utils/constants';
+import { setSelectedApplication } from '../actions/selected';
+
+class Header extends Component {
+	onLogoClick() {
+		this.props.setSelectedApplication(DEFAULTS.selected.application);
+	}
+
 	render() {
 		return (
 			<div className="page-header navbar navbar-fixed-top">
 				<div className="page-header-inner ">
 					<div className="page-logo">
-						<a href="javascript:;">
+						<a href="javascript:;" onClick={() => this.onLogoClick()}>
 							<img src="../../styles/pages/img/iwd-logo-1.png" alt="logo" className="logo-default" height="25" /> </a>
 							<div className="menu-toggler sidebar-toggler">
 							<span></span>
@@ -20,3 +28,14 @@ export default class Header extends Component {
 		);
 	}
 }
+
+function mapDispatchToProps(dispatch) {
+	return {
+		setSelectedApplication: data => dispatch(setSelectedApplication(data))
+	};
+}
+
+export default connect(
+	null,
+	mapDispatchToProps
+)(Header);

@@ -9,7 +9,11 @@ import Home from './components/Home';
 import RootReducer from './reducers/root';
 
 const socket = SocketIO('http://localhost:8080');
-const store = createStore(RootReducer, { socket });
+const store = createStore(
+	RootReducer,
+	{ socket },
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({name: `SocketIO Log Viewer (${socket.id})`})
+);
 
 ReactDOM.render(
 (<Provider store={store}>

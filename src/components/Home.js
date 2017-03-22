@@ -6,10 +6,12 @@ import Header from './Header';
 import MainView from './MainView/MainView';
 import Sidebar from './Sidebar';
 import { ACTIONS } from '../utils/constants';
+import { addLog } from '../actions/logs';
 import { setApplications } from '../actions/applications';
 
 class Home extends Component {
 	componentDidMount() {
+		this.props.socket.on(ACTIONS.LOG, data => this.props.addLog(data));
 		this.props.socket.on(ACTIONS.SET_APPLICATIONS, data => this.props.setApplications(data));
 		this.props.socket.emit(ACTIONS.GET_APPLICATIONS);
 	}
@@ -37,6 +39,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
+		addLog: data => dispatch(addLog(data)),
 		setApplications: data => dispatch(setApplications(data))
 	};
 }

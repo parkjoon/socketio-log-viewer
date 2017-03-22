@@ -17,8 +17,8 @@ class Home extends Component {
 
 		// HARDCODE THIS FOR NOW.
 		// Refactor to join based on user selection and interaction.
-		this.props.socket.emit(ACTIONS.JOIN_ROOM, 'FORM_BUILDER');
-		this.props.socket.emit(ACTIONS.JOIN_ROOM, 'REPORT_FORM_BUILDER');
+		this.props.socket.emit(ACTIONS.JOIN_ROOM, 'APPLICATION_FORM_BUILDER');
+		this.props.socket.emit(ACTIONS.JOIN_ROOM, 'APPLICATION_REPORT_FORM_BUILDER');
 	}
 
 	render() {

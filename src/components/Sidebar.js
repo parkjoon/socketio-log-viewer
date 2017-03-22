@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { FLAGS } from '../utils/constants';
 import { setSelectedApplication } from '../actions/selected';
 
 class Sidebar extends Component {
+	renderApplicationsArrow() {
+		if(this.props.flags.applications === FLAGS.RESOLVED && this.props.applications.length) {
+			return <span className="arrow open"></span>;
+		}
+	}
+
 	renderApplicationListItems() {
 		return this.props.applications.map(application => {
 			const className = application.id === this.props.selected.application.id ? 'nav-item start active open' : 'nav-item start';
@@ -32,7 +39,7 @@ class Sidebar extends Component {
 								<i className="icon-home" style={{marginRight: '10px'}}></i>
 								<span className="title">Applications</span>
 								<span className="selected"></span>
-								<span className="arrow open"></span>
+								{this.renderApplicationsArrow()}
 							</a>
 							<ul className="sub-menu" style={{marginTop: 0}}>
 								{this.renderApplicationListItems()}
@@ -48,6 +55,7 @@ class Sidebar extends Component {
 function mapStateToProps(state) {
 	return {
 		applications: state.applications,
+		flags: state.flags,
 		selected: state.selected
 	};
 }

@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import Home from './components/Home';
 import RootReducer from './reducers/root';
 
-const socket = SocketIO('http://localhost:8080');
+const socket = SocketIO('http://localhost:' + (require('../config.json').serverPort || 8080));
 const store = createStore(
 	RootReducer,
 	{ socket },

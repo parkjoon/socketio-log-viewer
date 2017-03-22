@@ -1,10 +1,11 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+var webpackConfig = require('./webpack.config');
+var config = require('./config.json');
 
-new WebpackDevServer(webpack(config), {
-	publicPath: config.output.publicPath
-}).listen(3000, 'localhost', function(err, result) {
+new WebpackDevServer(webpack(webpackConfig), {
+	publicPath: webpackConfig.output.publicPath
+}).listen(config.port || 8081, 'localhost', function(err, result) {
 	if(err) console.log(err);
-	console.log('Running at http://localhost:3000');
+	console.log('Running at http://localhost:' + (config.port || 8081));
 });

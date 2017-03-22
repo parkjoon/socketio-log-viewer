@@ -16,10 +16,16 @@ class Home extends Component {
 		this.props.socket.on(ACTIONS.SET_APPLICATIONS, data => {
 			this.props.setApplications(data);
 			this.props.setFlag({ flag: 'applications', value: FLAGS.RESOLVED });
+			this.joinAllApplicationRooms();
 		});
 
 		this.props.setFlag({ flag: 'applications', value: FLAGS.REQUESTED });
 		this.props.socket.emit(ACTIONS.GET_APPLICATIONS);
+	}
+
+	// Might want to consider performance issues with this strategy.
+	joinAllApplicationRooms() {
+		this.props.applications.forEach(application => this.props.socket.emit(ACTIONS.JOIN_ROOM, `APPLICATION_${application.id}`));
 	}
 
 	render() {
@@ -39,6 +45,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
 	return {
+		applications: state.applications,
 		socket: state.socket
 	};
 }

@@ -18,7 +18,12 @@ class LogTable extends Component {
 
 	render() {
 		if(this.props.selected.application.id === '') {
-			return null;
+			return (
+				<div className="note note-success">
+					<h4 className="block">Welcome to the SocketIO Log Viewer</h4>
+					<p style={{marginBottom: '10px'}}>Select an application in the sidebar to view logs in real time.</p>
+				</div>
+			);
 		}
 
 		return (

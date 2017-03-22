@@ -6,8 +6,8 @@ export default class Header extends Component {
 			<div className="page-header navbar navbar-fixed-top">
 				<div className="page-header-inner ">
 					<div className="page-logo">
-						<a href="index.html">
-							<img src="../../styles/layouts/layout/img/logo.png" alt="logo" className="logo-default" /> </a>
+						<a href="javascript:;">
+							<img src="../../styles/pages/img/iwd-logo-1.png" alt="logo" className="logo-default" height="25" /> </a>
 							<div className="menu-toggler sidebar-toggler">
 							<span></span>
 						</div>

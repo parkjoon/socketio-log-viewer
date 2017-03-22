@@ -4,11 +4,13 @@ import applications from './applications';
 import flags from './flags';
 import logs from './logs';
 import selected from './selected';
+import stats from './stats';
 
 export default combineReducers({
 	applications,
 	flags,
 	logs,
 	selected,
-	socket: (s = {}) => s
+	socket: (s = {}) => s,
+	stats
 });

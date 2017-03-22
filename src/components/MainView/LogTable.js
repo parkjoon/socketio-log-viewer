@@ -17,15 +17,6 @@ class LogTable extends Component {
 	}
 
 	render() {
-		if(this.props.selected.application.id === '') {
-			return (
-				<div className="note note-success">
-					<h4 className="block">Welcome to the SocketIO Log Viewer</h4>
-					<p style={{marginBottom: '10px'}}>Select an application in the sidebar to view logs in real time.</p>
-				</div>
-			);
-		}
-
 		return (
 			<div className="mt-bootstrap-tables">
 				<div className="portlet box blue">
@@ -56,8 +47,7 @@ class LogTable extends Component {
 
 function mapStateToProps(state) {
 	return {
-		logs: state.logs[state.selected.application.id] || [],
-		selected: state.selected
+		logs: state.logs[state.selected.application.id] || []
 	};
 }
 

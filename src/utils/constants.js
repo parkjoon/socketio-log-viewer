@@ -3,6 +3,7 @@ export const ACTIONS = {
 	GET_APPLICATIONS: 'GET_APPLICATIONS',
 	GET_TYPES: 'GET_TYPES',
 	LOG: 'LOG',
+	INCREMENT_STAT: 'INCREMENT_STAT',
 	JOIN_ROOM: 'JOIN_ROOM',
 	SET_APPLICATIONS: 'SET_APPLICATIONS',
 	SET_FLAG: 'SET_FLAG',
@@ -25,6 +26,14 @@ export const DEFAULTS = {
 			id: '',
 			label: ''
 		}
+	},
+	stats: {
+		DEBUG: 0,
+		ERROR: 0,
+		FATAL: 0,
+		INFO: 0,
+		TRACE: 0,
+		WARNING: 0
 	}
 };
 

@@ -7,12 +7,16 @@ import MainView from './MainView/MainView';
 import Sidebar from './Sidebar';
 import { ACTIONS, FLAGS } from '../utils/constants';
 import { addLog } from '../actions/logs';
+import { incrementStat } from '../actions/stats';
 import { setApplications } from '../actions/applications';
 import { setFlag } from '../actions/flags';
 
 class Home extends Component {
 	componentDidMount() {
-		this.props.socket.on(ACTIONS.LOG, data => this.props.addLog(data));
+		this.props.socket.on(ACTIONS.LOG, data => {
+			this.props.addLog(data);
+			this.props.incrementStat(data.type);
+		});
 		this.props.socket.on(ACTIONS.SET_APPLICATIONS, data => {
 			this.props.setApplications(data);
 			this.props.setFlag({ flag: 'applications', value: FLAGS.RESOLVED });
@@ -53,6 +57,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		addLog: data => dispatch(addLog(data)),
+		incrementStat: data => dispatch(incrementStat(data)),
 		setApplications: data => dispatch(setApplications(data)),
 		setFlag: data => dispatch(setFlag(data))
 	};

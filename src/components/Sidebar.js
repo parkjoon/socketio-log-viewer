@@ -36,7 +36,7 @@ class Sidebar extends Component {
 						</li>
 						<li className="nav-item start active open">
 							<a href="javascript:;" className="nav-link nav-toggle">
-								<i className="icon-home" style={{marginRight: '10px'}}></i>
+								<i className="fa fa-cubes" style={{marginRight: '10px'}}></i>
 								<span className="title">Applications</span>
 								<span className="selected"></span>
 								{this.renderApplicationsArrow()}

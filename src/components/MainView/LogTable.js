@@ -1,9 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { setApplicationFilter } from '../../actions/filters';
 import { TYPE_TO_CLASS } from '../../utils/constants';
 
 class LogTable extends Component {
+	toggleTypeFilter(type) {
+		this.props.setApplicationFilter({
+			application: this.props.selected.application.id,
+			filter: type,
+			value: !this.props.filters[this.props.selected.application.id][type]
+		});
+	}
+
+	renderFilters() {
+		return (
+			<div className="mt-checkbox-inline">
+				<label className="mt-checkbox">
+					<input id="hover" type="checkbox" checked={this.props.filters[this.props.selected.application.id].DEBUG} onChange={() => this.toggleTypeFilter('DEBUG')} />DEBUG
+					<span></span>
+				</label>
+				<label className="mt-checkbox">
+					<input id="striped" type="checkbox" checked={this.props.filters[this.props.selected.application.id].ERROR} onChange={() => this.toggleTypeFilter('ERROR')} />ERROR
+					<span></span>
+				</label>
+				<label className="mt-checkbox">
+					<input id="condensed" type="checkbox" checked={this.props.filters[this.props.selected.application.id].FATAL} onChange={() => this.toggleTypeFilter('FATAL')} />FATAL
+					<span></span>
+				</label>
+				<label className="mt-checkbox">
+					<input id="condensed" type="checkbox" checked={this.props.filters[this.props.selected.application.id].INFO} onChange={() => this.toggleTypeFilter('INFO')} />INFO
+					<span></span>
+				</label>
+				<label className="mt-checkbox">
+					<input id="condensed" type="checkbox" checked={this.props.filters[this.props.selected.application.id].TRACE} onChange={() => this.toggleTypeFilter('TRACE')} />TRACE
+					<span></span>
+				</label>
+				<label className="mt-checkbox">
+					<input id="condensed" type="checkbox" checked={this.props.filters[this.props.selected.application.id].WARNING} onChange={() => this.toggleTypeFilter('WARNING')} />WARNING
+					<span></span>
+				</label>
+			</div>
+		);
+	}
+
 	renderLogTableRows() {
 		return this.props.logs.map(log => {
 			return (
@@ -24,6 +64,7 @@ class LogTable extends Component {
 						<div className="caption"><i className="fa fa-file-text-o" style={{marginRight: '10px'}}></i>Logs</div>
 					</div>
 					<div className="portlet-body">
+						{this.renderFilters()}
 						<div className="table-scrollable">
 							<table className="table table-bordered table-hover">
 								<thead>
@@ -47,11 +88,19 @@ class LogTable extends Component {
 
 function mapStateToProps(state) {
 	return {
-		logs: state.logs[state.selected.application.id] || []
+		filters: state.filters,
+		logs: state.logs[state.selected.application.id] || [],
+		selected: state.selected
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		setApplicationFilter: data => dispatch(setApplicationFilter(data))
 	};
 }
 
 export default connect(
 	mapStateToProps,
-	null
+	mapDispatchToProps
 )(LogTable);

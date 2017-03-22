@@ -5,9 +5,9 @@ import { TYPE_TO_CLASS } from '../../utils/constants';
 
 class LogTable extends Component {
 	renderLogTableRows() {
-		this.props.logs.map(log => {
+		return this.props.logs.map(log => {
 			return (
-				<tr className={TYPE_TO_CLASS[log.type]}>
+				<tr key={`log-item-${log.time}`} className={TYPE_TO_CLASS[log.type]}>
 					<td>{log.time}</td>
 					<td>{log.type}</td>
 					<td>{log.message}</td>

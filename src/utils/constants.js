@@ -5,6 +5,8 @@ export const ACTIONS = {
 	LOG: 'LOG',
 	INCREMENT_STAT: 'INCREMENT_STAT',
 	JOIN_ROOM: 'JOIN_ROOM',
+	SET_APPLICATION_FILTER: 'SET_APPLICATION_FILTER',
+	SET_APPLICATION_FILTERS: 'SET_APPLICATION_FILTERS',
 	SET_APPLICATIONS: 'SET_APPLICATIONS',
 	SET_FLAG: 'SET_FLAG',
 	SET_SELECTED_APPLICATION: 'SET_SELECTED_APPLICATION',
@@ -18,6 +20,14 @@ export const FLAGS = {
 };
 
 export const DEFAULTS = {
+	applicationFilter: {
+		DEBUG: true,
+		ERROR: true,
+		FATAL: true,
+		INFO: true,
+		TRACE: true,
+		WARNING: true
+	},
 	flags: {
 		applications: FLAGS.NONE
 	},

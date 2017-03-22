@@ -1,6 +1,6 @@
 import { ACTIONS } from '../utils/constants';
 
-export default function rooms(state = {}, action) {
+export default function logs(state = {}, action) {
 	switch(action.type) {
 		// TODO - refactor logic.
 		case ACTIONS.ADD_LOG:

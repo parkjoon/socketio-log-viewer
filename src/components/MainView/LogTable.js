@@ -8,7 +8,7 @@ class LogTable extends Component {
 		return this.props.logs.map(log => {
 			return (
 				<tr key={`log-item-${log.time}`} className={TYPE_TO_CLASS[log.type]}>
-					<td>{log.time}</td>
+					<td>{(new Date(log.time)).toLocaleString()}</td>
 					<td>{log.type}</td>
 					<td>{log.message}</td>
 				</tr>

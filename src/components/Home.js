@@ -14,6 +14,11 @@ class Home extends Component {
 		this.props.socket.on(ACTIONS.LOG, data => this.props.addLog(data));
 		this.props.socket.on(ACTIONS.SET_APPLICATIONS, data => this.props.setApplications(data));
 		this.props.socket.emit(ACTIONS.GET_APPLICATIONS);
+
+		// HARDCODE THIS FOR NOW.
+		// Refactor to join based on user selection and interaction.
+		this.props.socket.emit(ACTIONS.JOIN_ROOM, 'FORM_BUILDER');
+		this.props.socket.emit(ACTIONS.JOIN_ROOM, 'REPORT_FORM_BUILDER');
 	}
 
 	render() {

@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Sidebar extends Component {
+import { setSelectedApplication } from '../actions/selected';
+
+class Sidebar extends Component {
+	renderApplicationListItems() {
+		return this.props.applications.map(application => {
+			const className = application.id === this.props.selected.application.id ? 'nav-item start active open' : 'nav-item start';
+			return (
+				<li key={`sidebar-application-${application.id}`} className={className}>
+					<a href="javascript:;" className="nav-link " onClick={() => this.props.setSelectedApplication(application)}>
+						<i className="fa fa-file-text-o" style={{marginRight: '10px'}}></i>
+						<span className="title">{application.label}</span>
+						<span className="selected"></span>
+					</a>
+				</li>
+			);
+		});
+	}
+
 	render() {
 		return (
 			<div className="page-sidebar-wrapper">
@@ -11,33 +29,13 @@ export default class Sidebar extends Component {
 						</li>
 						<li className="nav-item start active open">
 							<a href="javascript:;" className="nav-link nav-toggle">
-								<i className="icon-home"></i>
-								<span className="title">Dashboard</span>
+								<i className="icon-home" style={{marginRight: '10px'}}></i>
+								<span className="title">Applications</span>
 								<span className="selected"></span>
 								<span className="arrow open"></span>
 							</a>
-							<ul className="sub-menu">
-								<li className="nav-item start active open">
-									<a href="index.html" className="nav-link ">
-										<i className="icon-bar-chart"></i>
-										<span className="title">Dashboard 1</span>
-										<span className="selected"></span>
-									</a>
-								</li>
-								<li className="nav-item start ">
-									<a href="dashboard_2.html" className="nav-link ">
-										<i className="icon-bulb"></i>
-										<span className="title">Dashboard 2</span>
-										<span className="badge badge-success">1</span>
-									</a>
-								</li>
-								<li className="nav-item start ">
-									<a href="dashboard_3.html" className="nav-link ">
-										<i className="icon-graph"></i>
-										<span className="title">Dashboard 3</span>
-										<span className="badge badge-danger">5</span>
-									</a>
-								</li>
+							<ul className="sub-menu" style={{marginTop: 0}}>
+								{this.renderApplicationListItems()}
 							</ul>
 						</li>
 					</ul>
@@ -46,3 +44,21 @@ export default class Sidebar extends Component {
 		);
 	}
 }
+
+function mapStateToProps(state) {
+	return {
+		applications: state.applications,
+		selected: state.selected
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		setSelectedApplication: data => dispatch(setSelectedApplication(data))
+	};
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Sidebar);

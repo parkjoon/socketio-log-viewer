@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class MainView extends Component {
+import LogTable from './LogTable';
+
+class MainView extends Component {
 	render() {
 		return (
 			<div className="page-content-wrapper">
@@ -12,13 +15,25 @@ export default class MainView extends Component {
                             </li>
                             <li>
 								<i className="fa fa-circle"></i>
-                                <span>Dashboard</span>
+                                <span>Applications</span>
                             </li>
                         </ul>
                     </div>
-					<h3 className="page-title">Dashboard</h3>
+					<h3 className="page-title">{this.props.selected.application.label}</h3>
+					<LogTable />
 				</div>
 			</div>
 		);
 	}
 }
+
+function mapStateToProps(state) {
+	return {
+		selected: state.selected
+	};
+}
+
+export default connect(
+	mapStateToProps,
+	null
+)(MainView);

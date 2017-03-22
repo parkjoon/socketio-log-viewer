@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 import applications from './applications';
+import logs from './logs';
 import selected from './selected';
-import types from './types';
 
 export default combineReducers({
 	applications,
+	logs,
 	selected,
-	socket: (s = {}) => s,
-	types
+	socket: (s = {}) => s
 });

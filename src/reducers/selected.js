@@ -1,6 +1,6 @@
-import { ACTIONS } from '../utils/constants';
+import { ACTIONS, DEFAULTS } from '../utils/constants';
 
-export default function selected(state = {}, action) {
+export default function selected(state = DEFAULTS.selected, action) {
 	switch(action.type) {
 		case ACTIONS.SET_SELECTED_APPLICATION:
 			return {

@@ -1,8 +1,8 @@
 import { ACTIONS } from '../utils/constants';
 
-export default function rooms(state = [], action) {
+export default function rooms(state = {}, action) {
 	switch(action.type) {
-		case ACTIONS.SET_ROOMS:
+		case ACTIONS.SET_LOGS:
 			return action.data;
 		default:
 			return state;

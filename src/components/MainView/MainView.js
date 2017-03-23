@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AggregateChart from './AggregateChart';
-import LogTable from './LogTable';
+import SocketIOLogTable from './SocketIOLogTable';
 import { DEFAULTS } from '../../utils/constants';
 import { setSelectedApplication } from '../../actions/selected';
 
@@ -23,7 +23,7 @@ class MainView extends Component {
 				</div>
 			);
 		}
-		return <LogTable />;
+		return <SocketIOLogTable />;
 	}
 
 	render() {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setApplicationFilter } from '../../actions/filters';
 import { TYPE_TO_CLASS } from '../../utils/constants';
 
-class LogTable extends Component {
+class SocketIOLogTable extends Component {
 	toggleTypeFilter(type) {
 		this.props.setApplicationFilter({
 			application: this.props.selected.application.id,
@@ -63,7 +63,7 @@ class LogTable extends Component {
 			<div className="mt-bootstrap-tables">
 				<div className="portlet box blue">
 					<div className="portlet-title">
-						<div className="caption"><i className="fa fa-file-text-o" style={{marginRight: '10px'}}></i>Logs</div>
+						<div className="caption"><i className="fa fa-file-text-o" style={{marginRight: '10px'}}></i>SocketIO Server Logs</div>
 					</div>
 					<div className="portlet-body">
 						{this.renderFilters()}
@@ -105,4 +105,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(LogTable);
+)(SocketIOLogTable);

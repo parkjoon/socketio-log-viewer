@@ -34,8 +34,8 @@ export const DEFAULTS = {
 	selected: {
 		application: {
 			id: '',
-			label: '',
-			icon: ''
+			icon: '',
+			label: ''
 		}
 	},
 	stats: {

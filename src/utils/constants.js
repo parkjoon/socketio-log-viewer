@@ -25,6 +25,7 @@ export const DEFAULTS = {
 		ERROR: true,
 		FATAL: true,
 		INFO: true,
+		LOG: true,
 		TRACE: true,
 		WARNING: true
 	},
@@ -43,6 +44,7 @@ export const DEFAULTS = {
 		ERROR: 0,
 		FATAL: 0,
 		INFO: 0,
+		LOG: 0,
 		TRACE: 0,
 		WARNING: 0
 	}
@@ -53,6 +55,7 @@ export const TYPE_TO_CLASS = {
 	ERROR: 'danger',
 	FATAL: 'danger',
 	INFO: 'info',
+	LOG: 'log',
 	TRACE: 'default',
 	WARNING: 'warning'
 };

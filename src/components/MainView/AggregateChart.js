@@ -28,7 +28,7 @@ class AggregateChart extends Component {
 			...this.props.stats
 		};
 
-		return <RTChart fields={Object.keys(this.props.stats)} data={data} chart={chart} maxValues={200} />;
+		return <RTChart fields={Object.keys(this.props.stats)} data={data} chart={chart} maxValues={100} />;
 	}
 }
 

@@ -17,7 +17,7 @@ class Sidebar extends Component {
 			return (
 				<li key={`sidebar-application-${application.id}`} className={className}>
 					<a href="javascript:;" className="nav-link " onClick={() => this.props.setSelectedApplication(application)}>
-						<i className="fa fa-file-text-o" style={{marginRight: '10px'}}></i>
+						<i className={application.icon || 'fa fa-file-text-o'} style={{marginRight: '10px'}}></i>
 						<span className="title">{application.label}</span>
 						<span className="selected"></span>
 					</a>

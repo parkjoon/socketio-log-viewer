@@ -17,12 +17,18 @@ class AggregateChart extends Component {
 	}
 
 	render() {
+		const chart = {
+			size: {
+				height: '650'
+			}
+		};
+
 		const data = {
 			date: new Date(),
 			...this.props.stats
 		};
 
-		return <RTChart fields={Object.keys(this.props.stats)} data={data} maxValues={200} />;
+		return <RTChart fields={Object.keys(this.props.stats)} data={data} chart={chart} maxValues={200} />;
 	}
 }
 

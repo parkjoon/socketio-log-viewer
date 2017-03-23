@@ -33,6 +33,10 @@ class SocketIOLogTable extends Component {
 					<span></span>
 				</label>
 				<label className="mt-checkbox">
+					<input id="condensed" type="checkbox" checked={this.props.filters[this.props.selected.application.id].LOG} onChange={() => this.toggleTypeFilter('LOG')} />LOG
+					<span></span>
+				</label>
+				<label className="mt-checkbox">
 					<input id="condensed" type="checkbox" checked={this.props.filters[this.props.selected.application.id].TRACE} onChange={() => this.toggleTypeFilter('TRACE')} />TRACE
 					<span></span>
 				</label>

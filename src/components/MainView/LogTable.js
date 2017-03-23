@@ -46,13 +46,15 @@ class LogTable extends Component {
 
 	renderLogTableRows() {
 		return this.props.logs.map(log => {
-			return (
-				<tr key={`log-item-${log.time}`} className={TYPE_TO_CLASS[log.type]}>
-					<td>{(new Date(log.time)).toLocaleString()}</td>
-					<td>{log.type}</td>
-					<td>{log.message}</td>
-				</tr>
-			);
+			if(this.props.filters[this.props.selected.application.id][log.type]) {
+				return (
+					<tr key={`log-item-${log.time}`} className={TYPE_TO_CLASS[log.type]}>
+						<td>{(new Date(log.time)).toLocaleString()}</td>
+						<td>{log.type}</td>
+						<td>{log.message}</td>
+					</tr>
+				);
+			}
 		});
 	}
 
